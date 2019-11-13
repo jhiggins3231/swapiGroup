@@ -8,7 +8,9 @@ import { FilmsService } from '../films.service'
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private filmsService: FilmsService
+  ) { }
 
   ngOnInit() {
   }

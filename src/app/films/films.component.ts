@@ -8,6 +8,7 @@ import { FilmsService } from '../films.service';
 })
 export class FilmsComponent implements OnInit {
 
+  test: any = 'Test String'
   films: any = [];
   ships: any = [];
   person: any = [];
@@ -21,7 +22,7 @@ export class FilmsComponent implements OnInit {
       .subscribe( film => {
         this.films = film
         this.films = this.films.results
-        console.log(this.films)
+        console.log('These are my films: ', this.films)
       })
   }
 
@@ -30,7 +31,7 @@ export class FilmsComponent implements OnInit {
       .subscribe( ship => {
         this.ships = ship
         this.ships = this.ships.results
-        console.log(this.ships)
+        console.log('These are my ships:', this.ships)
       })
   }
 
@@ -39,8 +40,12 @@ export class FilmsComponent implements OnInit {
       .subscribe( people => {
         this.person = people
         this.person = this.person.results
-        console.log(this.person)
+        console.log('These are my people:', this.person)
       })
+  }
+
+  logBinding(){
+    console.log(this.test)
   }
 
   ngOnInit() {

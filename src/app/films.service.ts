@@ -5,11 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FilmsService {
-  
-  // baseUrl = `https://swapi.co/api/${searchData.value}/${inputValue.value}`
+    
+  baseUrl = `https://swapi.co/api/`
 
   filmUrl = 'https://swapi.co/api/films/'
-  shipUrl = 'https://swapi.co/api/starships/'
+  shipUrl = 'https://swapi.co/api/starships'
   peopleUrl = 'https://swapi.co/api/people'
 
   constructor(

@@ -1,3 +1,7 @@
+<h1>{{ test }}</h1>
+<input type='text' [(ngModel)]='test'>
+<button (click)='logBinding()'>Click to console log the databind</button>
+
 <div style='display: flex; flex-direction: row'>
     <div>
     <button (click)='showFilms()'>Push to Display Films</button>
@@ -5,7 +9,6 @@
 
         <ul *ngFor='let film of films'>
             <li> {{ film.title }} </li>
-            <li> {{ film.url }}</li>
         </ul>
     </div>
 
