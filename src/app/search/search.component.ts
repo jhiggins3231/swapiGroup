@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FilmsService } from '../films.service'
 
 @Component({
   selector: 'app-search',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class SearchComponent implements OnInit {
 useBtn = false;
-  constructor() {
+  constructor(
+    private filmsService: FilmsService
+  ) {
     setTimeout(() => {
       this.useBtn = true;
     }, 4000)    
