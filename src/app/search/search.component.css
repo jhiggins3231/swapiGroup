@@ -1,0 +1,12 @@
+.form-group {
+    display: block;
+    border-radius: 10px;
+    padding: 10px;
+    width: 40vw;
+    height: 15vh;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 10%);
+    flex: auto;
+}
