@@ -1,7 +1,7 @@
 // ANGULAR IMPORTS
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -21,11 +21,12 @@ import { SearchComponent } from './search/search.component';
     PeopleComponent,
     FilmsComponent,
     ShipsComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [],

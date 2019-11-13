@@ -1,1 +1,12 @@
-<p>ships works!</p>
+<button
+    (click)='showData()'
+    style="width: fit-content; height: 3vh; border-radius: 5px; color: goldenrod; background-color: black;"
+    type="button"
+    >
+    Ad Astra
+    </button>
+    <div>
+            <ul *ngFor='let ship of ships'>
+                <li> {{ starships.name }}</li>
+            </ul>
+        </div>
