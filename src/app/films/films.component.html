@@ -1,1 +1,9 @@
-<p>films works!</p>
+<div>
+    <button (click)='showFilms()'>Button</button>
+
+    <div>
+        <ul *ngFor='let film of films'>
+            <li> {{ film.title }}</li>
+        </ul>
+    </div>
+</div>
