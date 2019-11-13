@@ -8,19 +8,19 @@
         </select>
         <div *ngIf="searchTerm === 'People'">
             <label for="name" style="font-size: 1.8em;">Enter Person Name:</label>
-            <input type="text" class="form-control" id="name" ngModel name="searchData" required
+            <input type="text" class="form-control" id="name" [(ngModel)]='this.filmsService.searchParam' name="searchData" required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
             <br />
             <br />
-            <button type="submit">Ad Astra</button>
+            <button (click)='logParam()' type="submit">Ad Astra</button>
         </div>  
         <div *ngIf="searchTerm === 'Starships'">
             <label for="name" style="font-size: 1.8em;">Enter Starships Name:</label>
-            <input type="text" class="form-control" id="name" ngModel name="searchData" required
+            <input type="text" class="form-control" id="name" [(ngModel)]='searchParam' name="searchData" required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
             <br />
             <br />
-            <button type="submit">Ad Astra</button>
+            <button type="submit" >Ad Astra</button>
         </div>
         <div *ngIf="searchTerm === 'Films'">
             <label for="name" style="font-size: 1.8em;">Enter Films Name:</label>

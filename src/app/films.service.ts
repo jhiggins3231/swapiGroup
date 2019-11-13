@@ -5,7 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FilmsService {
-    
+
+  searchParam: string = 'Test String';
+
   baseUrl = `https://swapi.co/api/`
 
   filmUrl = 'https://swapi.co/api/films/'

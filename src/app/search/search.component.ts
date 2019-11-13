@@ -13,6 +13,11 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.filmsService.searchParam)
+  }
+
+  logParam(){
+    console.log(this.filmsService.searchParam)
   }
 
 }
