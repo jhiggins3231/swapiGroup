@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FilmsService } from '../films.service'
 import { NgModel } from '@angular/forms';
 
@@ -8,28 +9,54 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  people;
-  ships;
-  films;
-  person: any =[];
-  film: any = [];
-  ship: any = [];
+
+  people: string = '';
+  starships: string = '';
+  films: string = '';
+
+  responseFilms: any;
+  responseShips: any;
+  responsetwo: any;
+
+  searchParam: any;
+  person: any = [];
+  film: any;
+  ship: any;
+
+  peopleUrl = `https://swapi.co/api/people/?search=`
+  shipUrl = `https://swapi.co/api/starships/?search=`
+  filmUrl = `https://swapi.co/api/films/?search=`
 
   constructor(
-    private filmsService: FilmsService
+    public filmsService: FilmsService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
     console.log(this.filmsService.searchParam)
   }
 
-  showPerson() {
-    this.filmsService.getPeople()
+  showPerson(searchParam) {
+    console.log()
+    this.getPeople(this.searchParam)
       .subscribe( people => {
+        console.log(people)
         this.person = people
         this.person = this.person.results
-        console.log(this.filmsService.peopleUrl + this.people)
+        console.log(this.person)
       })
+  }
+
+  getPeople(searchParam){
+    return this.http.get(`${this.peopleUrl}${searchParam}`)
+  }
+
+  search() {
+    this.http.get('https://swapi.co/api/people/?search=' + this.people)
+    .subscribe((responsetwo) => {
+      this.responsetwo = responsetwo;
+      console.log(this.responsetwo)
+    })
   }
 
   showShip() {
@@ -42,14 +69,39 @@ export class SearchComponent implements OnInit {
       })
   }
 
+  getShips(){
+    return this.http.get(`${this.shipUrl}${this.searchParam}`)
+  }
+
+  searchShips() {
+    this.http.get('https://swapi.co/api/starships/?search=' + this.starships)
+    .subscribe((responseShips) => {
+      this.responseShips = responseShips;
+      console.log(this.responseShips)
+    })
+  }
+ 
+ 
+
   showFilm() {
     this.filmsService.getFilms()
-    .subscribe( film => {
-      this.film = film
-      this.film = this.film.results[0]
-      console.log(film)
-      console.log(this.filmsService.filmUrl + this.films)
+      .subscribe( film => {
+        this.film = film
+        this.film = this.film.results
+        console.log('This is my endpoint:', this.filmsService.filmUrl)
       })
+  }
+  
+  getFilms(){
+    return this.http.get(`${this.filmUrl}${this.searchParam}`)
+  }
+
+  searchFilms() {
+    this.http.get('https://swapi.co/api/films/?search=' + this.films)
+    .subscribe((responseFilms) => {
+      this.responseFilms = responseFilms;
+      console.log(this.responseFilms)
+    })
   }
 
 }

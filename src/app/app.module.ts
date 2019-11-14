@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
@@ -46,7 +47,6 @@ import { PeopleComponent } from './people/people.component';
 import { FilmsComponent } from './films/films.component';
 import { ShipsComponent } from './ships/ships.component';
 import { SearchComponent } from './search/search.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -63,6 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,

@@ -7,8 +7,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 
+
 export class FilmsService {
-  searchParam: any;
+  searchParam: any = 'This lives in films.service'
   filmUrl = `https://swapi.co/api/films/?search=`
   shipUrl = `https://swapi.co/api/starships/?search=`
   peopleUrl = `https://swapi.co/api/people/?search=`
