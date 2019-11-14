@@ -23,7 +23,7 @@
             class="form-control"
             placeholder='Enter a Star Wars Character!' 
             id="name" 
-            [(ngModel)]='this.filmsService.searchParam' 
+            [(ngModel)]='searchParam' 
             name="searchData" 
             required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
@@ -31,8 +31,23 @@
             <br />
             <br />
 
-            <button (click)='showPerson()' type="submit">Ad Astra</button>
+            <button (click)='showPerson(searchParam)' type="submit">Ad Astra</button>
         </div>
+        <div class="form-group">
+                <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="people" name="something">
+                    <button class= "selectbutton" mat-raised-button (click)="search()">Search People</button>
+                    <div *ngIf="responsetwo">
+                        <ul>
+                          <li><span>Character Name : {{responsetwo?.results[0].name}}</span></li>
+                          <br>
+                      <li><span>Birth Year : {{responsetwo?.results[0].birth_year}}</span></li>
+                          <br>
+                          <li><span>Height : {{responsetwo?.results[0].height}}</span></li>
+                    </ul>
+                    </div>
+       
+
+        
         
     <!-- Starships Search Field -->
         <div *ngIf="searchTerm === 'Starships'">
@@ -53,6 +68,19 @@
             <button (click)='showShip()' type="submit" >Ad Astra</button>
         </div>
 
+        <div class="form-group">
+                <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="starships" name="something">
+                    <button class= "selectbutton" mat-raised-button (click)="searchShips()">Search Ships</button>
+                    <div *ngIf="responseShips">
+                        <ul>
+                          <li><span>Ship Name : {{responseShips?.results[0].name}}</span></li>
+                          <br>
+                      <li><span>Passenger : {{responseShips?.results[0].passsengers}}</span></li>
+                          <br>
+                          <li><span>Hyperdrive Value : {{responseShips?.results[0].hyperdrive_rating}}</span></li>
+                    </ul>
+                    </div>
+
     <!-- Films Search Field-->
         <div *ngIf="searchTerm === 'Films'">
             <label for="name" style="font-size: 1.8em;">Enter Films Name:</label>
@@ -71,4 +99,23 @@
 
         <button (click)='showFilm()' type="submit">Ad Astra</button>
     </div>
+
+    <div class="form-group">
+            <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="films" name="something">
+                <button class= "selectbutton" mat-raised-button (click)="searchFilms()">Search People</button>
+                <div *ngIf="responseFilms">
+                    <ul>
+                      <li><span>Character Name : {{responseFilms?.results[0].name}}</span></li>
+                      <br>
+                  <li><span>Birth Year : {{responseFilms?.results[0].birth_year}}</span></li>
+                      <br>
+                      <li><span>Height : {{responseFilms?.results[0].height}}</span></li>
+                </ul>
+                </div>
+
+    <h1 style='text-decoration: underline; color: white;'>{{ searchParam }}</h1>
+    <ul *ngFor='let person of person'>Results List:
+        <li>{{ person.name }}</li>
+    </ul>
     </div>
+    
