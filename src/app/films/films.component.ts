@@ -25,29 +25,6 @@ export class FilmsComponent implements OnInit {
         console.log('These are my films: ', this.films)
       })
   }
-
-  showShips() {
-    this.filmsService.getShips()
-      .subscribe( ship => {
-        this.ships = ship
-        this.ships = this.ships.results
-        console.log('These are my ships:', this.ships)
-      })
-  }
-
-  showPeople() {
-    this.filmsService.getPeople()
-      .subscribe( people => {
-        this.person = people
-        this.person = this.person.results
-        console.log('These are my people:', this.person)
-      })
-  }
-
-  logBinding(){
-    console.log(this.test)
-  }
-
   ngOnInit() {
   }
 

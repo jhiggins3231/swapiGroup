@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class FilmsService {
 
+
+export class FilmsService {
+  
   searchParam: any;
 
   filmUrl = `https://swapi.co/api/films/?search=${this.searchParam}`
