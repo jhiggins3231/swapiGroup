@@ -21,7 +21,6 @@ export class FilmsComponent implements OnInit {
         console.log(this.films)
       })
   }
-
   ngOnInit() {
   }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FilmsService } from '../films.service';
+
 
 @Component({
   selector: 'app-ships',
@@ -7,8 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShipsComponent implements OnInit {
 
-  constructor() { }
+  starships: any = [];
+  selected = 'option2';
 
+  constructor(
+  private filmsService: FilmsService
+  ) { }
+
+  showStarships() {
+    this.filmsService.getStarships()
+      .subscribe( starship => {
+        this.starships = starship
+        console.log(this.starships)
+      })
+  }
   ngOnInit() {
   }
 

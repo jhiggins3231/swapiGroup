@@ -12,7 +12,7 @@
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
             <br />
             <br />
-            <button type="submit">Ad Astra</button>
+            <button (click)='getPeople()' type="submit">Ad Astra</button>
         </div>  
         <div *ngIf="searchTerm === 'Starships'">
             <label for="name" style="font-size: 1.8em;">Enter Starships Name:</label>
