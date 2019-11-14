@@ -23,14 +23,14 @@
             class="form-control"
             placeholder='Enter a Star Wars Character!' 
             id="name" 
-            [(ngModel)]='this.filmsService.searchParam' 
+            [(ngModel)]='people' 
             name="searchData" 
             required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
-
+            InputValue = {{ people }}
             <br />
             <br />
-            <button (click)='getPeople()' type="submit">Ad Astra</button>
+            <button (click)='showPerson()' type="submit">Ad Astra</button>
         </div>  
 
         
@@ -42,7 +42,7 @@
             class="form-control"
             placeholder='Enter a Starship Name!' 
             id="name" 
-            [(ngModel)]='this.filmsService.searchParam' 
+            [(ngModel)]='ships' 
             name="searchData" 
             required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
@@ -61,7 +61,7 @@
         class="form-control"
         placeholder='Enter a Film Name!' 
         id="name" 
-        [(ngModel)]='this.filmsService.searchParam' 
+        [(ngModel)]='films' 
         name="searchData" 
         required
         style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">

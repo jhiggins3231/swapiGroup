@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FilmsService } from '../films.service'
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -7,7 +8,9 @@ import { FilmsService } from '../films.service'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-
+  people;
+  ships;
+  films;
   person: any =[];
   film: any = [];
   ship: any = [];
@@ -25,25 +28,27 @@ export class SearchComponent implements OnInit {
       .subscribe( people => {
         this.person = people
         this.person = this.person.results
-        console.log('This is my endpoint:', this.filmsService.peopleUrl)
+        console.log(this.filmsService.peopleUrl + this.people)
       })
   }
 
   showShip() {
-    this.filmsService.getPeople()
+    this.filmsService.getShips()
       .subscribe( ship => {
         this.ship = ship
         this.ship = this.ship.results
-        console.log('This is my endpoint:', this.filmsService.shipUrl)
+        console.log(ship)
+        console.log(this.filmsService.shipUrl + this.ships)
       })
   }
 
   showFilm() {
-    this.filmsService.getPeople()
-      .subscribe( film => {
-        this.film = film
-        this.film = this.film.results
-        console.log('This is my endpoint:', this.filmsService.filmUrl)
+    this.filmsService.getFilms()
+    .subscribe( film => {
+      this.film = film
+      this.film = this.film.results[0]
+      console.log(film)
+      console.log(this.filmsService.filmUrl + this.films)
       })
   }
 
