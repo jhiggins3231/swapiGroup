@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FilmsService } from '../films.service';
+=======
+import { FilmsService } from '../films.service'
+>>>>>>> fbb84fb2768f53129494558d95f7be4ff2e39d1d
 
 @Component({
   selector: 'app-search',
