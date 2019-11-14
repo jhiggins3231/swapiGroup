@@ -8,7 +8,7 @@ import { FilmsService } from '../films.service';
 })
 export class FilmsComponent implements OnInit {
 
-  test: any = 'Test String'
+  test: any = 'Test String';
   films: any = [];
   ships: any = [];
   person: any = [];
