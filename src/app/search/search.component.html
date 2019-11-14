@@ -1,33 +1,74 @@
 <div class="form-group" style="text-align: center; background-color: rgba(0, 0, 0, 0.6);">
+
+    <!-- Search Input -->
         <label for="data" style="font-size: 1.8em;">Search:</label>
-        <select class="form-control" id="data" [(ngModel)]="searchTerm" name="searchData" required
+
+        <select class="form-control" 
+        id="data" 
+        [(ngModel)]="searchTerm" 
+        name="searchData" 
+        required
         style="background-color: black; color: goldenrod; width: 10vw; height: 3vh; font-size: 1em;">
+
         <option value="People">People</option>
         <option value="Starships">Starships</option>
         <option value="Films">Films</option>
         </select>
+
+    <!-- People Search Field -->
         <div *ngIf="searchTerm === 'People'">
             <label for="name" style="font-size: 1.8em;">Enter Person Name:</label>
-            <input type="text" class="form-control" id="name" ngModel name="searchData" required
+
+            <input type="text" 
+            class="form-control"
+            placeholder='Enter a Star Wars Character!' 
+            id="name" 
+            [(ngModel)]='this.filmsService.searchParam' 
+            name="searchData" 
+            required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
+
             <br />
             <br />
             <button (click)='getPeople()' type="submit">Ad Astra</button>
         </div>  
+
+        
+    <!-- Starships Search Field -->
         <div *ngIf="searchTerm === 'Starships'">
             <label for="name" style="font-size: 1.8em;">Enter Starships Name:</label>
-            <input type="text" class="form-control" id="name" ngModel name="searchData" required
+
+            <input type="text" 
+            class="form-control"
+            placeholder='Enter a Starship Name!' 
+            id="name" 
+            [(ngModel)]='this.filmsService.searchParam' 
+            name="searchData" 
+            required
             style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
+
             <br />
             <br />
-            <button type="submit">Ad Astra</button>
+
+            <button (click)='showShip()' type="submit" >Ad Astra</button>
         </div>
+
+    <!-- Films Search Field-->
         <div *ngIf="searchTerm === 'Films'">
             <label for="name" style="font-size: 1.8em;">Enter Films Name:</label>
-        <input type="text" class="form-control" id="name" ngModel name="searchData" required
+
+        <input type="text" 
+        class="form-control"
+        placeholder='Enter a Film Name!' 
+        id="name" 
+        [(ngModel)]='this.filmsService.searchParam' 
+        name="searchData" 
+        required
         style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
+
         <br />
         <br />
-        <button type="submit">Ad Astra</button>
+
+        <button (click)='showFilm()' type="submit">Ad Astra</button>
     </div>
     </div>

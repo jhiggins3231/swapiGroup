@@ -9,22 +9,25 @@ import { HttpClient } from '@angular/common/http';
 
 export class FilmsService {
   
-  People = `https://swapi.co/api/people/`;
-  Films = 'https://swapi.co/api/films/';
-  Starships = 'https://swapi.co/api/starships/';
-  // dbUrl = 'https://swapi.co/api/films/'
+  searchParam: any;
+
+  filmUrl = `https://swapi.co/api/films/?search=${this.searchParam}`
+  shipUrl = `https://swapi.co/api/starships/?search=${this.searchParam}`
+  peopleUrl = `https://swapi.co/api/people/?search=${this.searchParam}`
 
   constructor(
     private http: HttpClient
   ) { }
 
   getFilms(){
-    return this.http.get(this.Films)
+    return this.http.get(this.filmUrl)
   }
+
+  getShips(){
+    return this.http.get(this.shipUrl)
+  }
+
   getPeople(){
-    return this.http.get(this.People)
-  }
-  getStarships(){
-    return this.http.get(this.Starships)
+    return this.http.get(this.peopleUrl)
   }
 }

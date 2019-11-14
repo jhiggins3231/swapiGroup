@@ -8,7 +8,10 @@ import { FilmsService } from '../films.service';
 })
 export class FilmsComponent implements OnInit {
 
+  test: any = 'Test String';
   films: any = [];
+  ships: any = [];
+  person: any = [];
 
   constructor(
     private filmsService: FilmsService
@@ -18,7 +21,8 @@ export class FilmsComponent implements OnInit {
     this.filmsService.getFilms()
       .subscribe( film => {
         this.films = film
-        console.log(this.films)
+        this.films = this.films.results
+        console.log('These are my films: ', this.films)
       })
   }
   ngOnInit() {

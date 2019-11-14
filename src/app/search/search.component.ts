@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { FilmsService } from '../films.service';
-=======
 import { FilmsService } from '../films.service'
->>>>>>> fbb84fb2768f53129494558d95f7be4ff2e39d1d
 
 @Component({
   selector: 'app-search',
@@ -11,37 +7,44 @@ import { FilmsService } from '../films.service'
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  selected = '';
-  films: any = [];
-  peoples: any = [];
-  starships: any = [];
+
+  person: any =[];
+  film: any = [];
+  ship: any = [];
 
   constructor(
     private filmsService: FilmsService
   ) { }
 
-  showFilms() {
-    this.filmsService.getFilms()
-      .subscribe( film => {
-        this.films = film
-        console.log(this.films)
+  ngOnInit() {
+    console.log(this.filmsService.searchParam)
+  }
+
+  showPerson() {
+    this.filmsService.getPeople()
+      .subscribe( people => {
+        this.person = people
+        this.person = this.person.results
+        console.log('This is my endpoint:', this.filmsService.peopleUrl)
       })
   }
-  showPeople() {
+
+  showShip() {
     this.filmsService.getPeople()
-    .subscribe( people => {
-      this.peoples = people
-      console.log(this.peoples)
-    })
+      .subscribe( ship => {
+        this.ship = ship
+        this.ship = this.ship.results
+        console.log('This is my endpoint:', this.filmsService.shipUrl)
+      })
   }
-  showStarships() {
-    this.filmsService.getStarships()
-    .subscribe( starship => {
-      this.starships = starship
-      console.log(this.starships)
-    })
-  }
-  ngOnInit() {
+
+  showFilm() {
+    this.filmsService.getPeople()
+      .subscribe( film => {
+        this.film = film
+        this.film = this.film.results
+        console.log('This is my endpoint:', this.filmsService.filmUrl)
+      })
   }
 
 }
