@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
+  searchParam: any = 'This lives in films.service'
+
 
 export class FilmsService {
   
