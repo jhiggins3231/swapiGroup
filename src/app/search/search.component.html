@@ -1,119 +1,69 @@
 <div class="form-group" style="text-align: center; background-color: rgba(0, 0, 0, 0.6);">
-
     <!-- Search Input -->
         <label for="data" style="font-size: 1.8em;">Search:</label>
-
         <select class="form-control" 
         id="data" 
         [(ngModel)]="searchTerm" 
         name="searchData" 
         required
         style="background-color: black; color: goldenrod; width: 10vw; height: 3vh; font-size: 1em;">
-
         <option value="People">People</option>
         <option value="Starships">Starships</option>
         <option value="Films">Films</option>
         </select>
-
-    <!-- People Search Field -->
+        <br />
+<!-- People Search Field -->
         <div *ngIf="searchTerm === 'People'">
-            <label for="name" style="font-size: 1.8em;">Enter Person Name:</label>
-
-            <input type="text" 
-            class="form-control"
-            placeholder='Enter a Star Wars Character!' 
-            id="name" 
-            [(ngModel)]='searchParam' 
-            name="searchData" 
-            required
-            style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
-
-            <br />
-            <br />
-            <button (click)='getPeople()' type="submit">Ad Astra</button>
+            <div class="form-group">
+                <span style="color: goldenrod;">Search For Star Wars Characters:</span><input class="inputselect" type="text" [(ngModel)]="people" name="peoplesearch" style="background-color: black; color: goldenrod; width: 20vw; height: 3vh; border-radius: 5px;">
+                <br />
+                <button class= "selectbutton" style="background-color: black; color: goldenrod;" mat-raised-button (click)="search()">Search People</button>
+                <div *ngIf="responsetwo">
+                        <mat-card style="background-color:rgba(300, 300, 300, 0.2); border-radius: 10px;">
+                        <ul>
+                          <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Character Name : {{responsetwo?.results[0].name}}</span></li>
+                          <br>
+                      <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Birth Year : {{responsetwo?.results[0].birth_year}}</span></li>
+                          <br>
+                          <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Height : {{responsetwo?.results[0].height}}</span></li>
+                    </ul>
+                    </mat-card>
+                    </div>
+            </div>
         </div>  
-
-            <button (click)='showPerson(searchParam)' type="submit">Ad Astra</button>
+<div *ngIf="searchTerm === 'Starships'">
+            <div class="form-group">
+                    <span style="color: goldenrod;">Search For Star Wars Starships:</span><input class="inputselect" type="text" [(ngModel)]="starships" name="ships" style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;border-radius: 5px;">
+                    <br />
+                    <button class= "selectbutton" style="background-color: black; color: goldenrod;"v mat-raised-button (click)="searchShips()">Search Ships</button>
+                        <div *ngIf="responseShips">
+                            <mat-card style="background-color:rgba(300, 300, 300, 0.2); border-radius: 10px;">
+                            <ul>
+                              <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Ship Name : {{responseShips?.results[0].name}}</span></li>
+                              <br>
+                          <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Passenger : {{responseShips?.results[0].passengers}}</span></li>
+                              <br>
+                              <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Hyperdrive Value : {{responseShips?.results[0].hyperdrive_rating}}</span></li>
+                        </ul>
+                    </mat-card>
+                        </div>
         </div>
-        <div class="form-group">
-                <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="people" name="something">
-                    <button class= "selectbutton" mat-raised-button (click)="search()">Search People</button>
-                    <div *ngIf="responsetwo">
-                        <ul>
-                          <li><span>Character Name : {{responsetwo?.results[0].name}}</span></li>
-                          <br>
-                      <li><span>Birth Year : {{responsetwo?.results[0].birth_year}}</span></li>
-                          <br>
-                          <li><span>Height : {{responsetwo?.results[0].height}}</span></li>
-                    </ul>
-                    </div>
-       
-
-        
-=======
-        
-    <!-- Starships Search Field -->
-        <div *ngIf="searchTerm === 'Starships'">
-            <label for="name" style="font-size: 1.8em;">Enter Starships Name:</label>
-
-            <input type="text" 
-            class="form-control"
-            placeholder='Enter a Starship Name!' 
-            id="name" 
-            [(ngModel)]='this.filmsService.searchParam' 
-            name="searchData" 
-            required
-            style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
-
-            <br />
-            <br />
-
-            <button (click)='showShip()' type="submit" >Ad Astra</button>
         </div>
-
+<div *ngIf="searchTerm === 'Films'">
         <div class="form-group">
-                <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="starships" name="something">
-                    <button class= "selectbutton" mat-raised-button (click)="searchShips()">Search Ships</button>
-                    <div *ngIf="responseShips">
-                        <ul>
-                          <li><span>Ship Name : {{responseShips?.results[0].name}}</span></li>
-                          <br>
-                      <li><span>Passenger : {{responseShips?.results[0].passsengers}}</span></li>
-                          <br>
-                          <li><span>Hyperdrive Value : {{responseShips?.results[0].hyperdrive_rating}}</span></li>
-                    </ul>
-                    </div>
-
-    <!-- Films Search Field-->
-        <div *ngIf="searchTerm === 'Films'">
-            <label for="name" style="font-size: 1.8em;">Enter Films Name:</label>
-
-        <input type="text" 
-        class="form-control"
-        placeholder='Enter a Film Name!' 
-        id="name" 
-        [(ngModel)]='this.filmsService.searchParam' 
-        name="searchData" 
-        required
-        style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
-
-        <br />
-        <br />
-
-        <button (click)='showFilm()' type="submit">Ad Astra</button>
-    </div>
-
-    <div class="form-group">
-            <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="films" name="something">
-                <button class= "selectbutton" mat-raised-button (click)="searchFilms()">Search People</button>
+            <span style="color: goldenrod;">Search For Star Wars Films:</span><input class="inputselect" type="text" [(ngModel)]="films" name="filmName" style="background-color: black; color: goldenrod; width: 20vw; height: 3vh; border-radius: 5px;">
+            <br />
+                <button class= "selectbutton" style="background-color: black; color: goldenrod;" mat-raised-button (click)="searchFilms()">Search Films</button>
                 <div *ngIf="responseFilms">
+                <mat-card style="background-color:rgba(300, 300, 300, 0.2); border-radius: 10px;">
                     <ul>
-                      <li><span>Character Name : {{responseFilms?.results[0].name}}</span></li>
+                      <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Movie : {{responseFilms?.results[0].title}}</span></li>
                       <br>
-                  <li><span>Birth Year : {{responseFilms?.results[0].birth_year}}</span></li>
+                  <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Release Date : {{responseFilms?.results[0].release_date}}</span></li>
                       <br>
-                      <li><span>Height : {{responseFilms?.results[0].height}}</span></li>
+                      <li style="color: goldenrod; font-size: 1.2em;"><span style="color: goldenrod;">Epsiode : {{responseFilms?.results[0].episode_id}}</span></li>
                 </ul>
+                </mat-card>
                 </div>
 
     <h1 style='text-decoration: underline; color: white;'>{{ searchParam }}</h1>

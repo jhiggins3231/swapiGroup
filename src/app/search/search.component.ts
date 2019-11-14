@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FilmsService } from '../films.service'
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -63,7 +64,8 @@ export class SearchComponent implements OnInit {
       .subscribe( ship => {
         this.ship = ship
         this.ship = this.ship.results
-        console.log('This is my endpoint:', this.filmsService.shipUrl)
+        console.log(ship)
+        console.log(this.filmsService.shipUrl + this.ships)
       })
   }
 
