@@ -6,13 +6,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FilmsService {
 
-  searchParam: string = 'Test String';
+  searchParam: any;
 
-  baseUrl = `https://swapi.co/api/`
-
-  filmUrl = 'https://swapi.co/api/films/'
-  shipUrl = 'https://swapi.co/api/starships'
-  peopleUrl = 'https://swapi.co/api/people'
+  filmUrl = `https://swapi.co/api/films/?search=${this.searchParam}`
+  shipUrl = `https://swapi.co/api/starships/?search=${this.searchParam}`
+  peopleUrl = `https://swapi.co/api/people/?search=${this.searchParam}`
 
   constructor(
     private http: HttpClient
