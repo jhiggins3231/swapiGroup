@@ -17,7 +17,27 @@
 
     <!-- People Search Field -->
 
+<<<<<<< HEAD
         <div class="form-control" *ngIf="searchTerm === 'People'">
+=======
+            <input type="text" 
+            class="form-control"
+            placeholder='Enter a Star Wars Character!' 
+            id="name" 
+            [(ngModel)]='searchParam' 
+            name="searchData" 
+            required
+            style="background-color: black; color: goldenrod; width: 20vw; height: 3vh;">
+
+            <br />
+            <br />
+            <button (click)='getPeople()' type="submit">Ad Astra</button>
+        </div>  
+
+            <button (click)='showPerson(searchParam)' type="submit">Ad Astra</button>
+        </div>
+        <div class="form-group">
+>>>>>>> eff29b151ecaf8a6a51fb760b56f0b998ba3e8e0
                 <span>Search For Star Wars Characters:</span> <input class="inputselect" type="text" [(ngModel)]="people" name="something">
                     <button class= "selectbutton" mat-raised-button (click)="search()">Search People</button>
                     <div *ngIf="responsetwo">
@@ -31,6 +51,12 @@
                     </div>
        
 
+<<<<<<< HEAD
+=======
+        
+=======
+        
+>>>>>>> eff29b151ecaf8a6a51fb760b56f0b998ba3e8e0
     <!-- Starships Search Field -->
 
         <div class='form-control' *ngIf="searchTerm === 'Starships'">
