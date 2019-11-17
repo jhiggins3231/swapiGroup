@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FilmsService } from '../films.service'
 import { NgModel } from '@angular/forms';
 
 @Component({
@@ -28,12 +27,10 @@ export class SearchComponent implements OnInit {
   filmUrl = `https://swapi.co/api/films/?search=`
 
   constructor(
-    public filmsService: FilmsService,
     private http: HttpClient
   ) { }
 
   ngOnInit() {
-    console.log(this.filmsService.searchParam)
   }
 
   showPerson(searchParam) {
@@ -59,15 +56,15 @@ export class SearchComponent implements OnInit {
     })
   }
 
-  showShip() {
-    this.filmsService.getShips()
-      .subscribe( ship => {
-        this.ship = ship
-        this.ship = this.ship.results
-        console.log(ship)
-        console.log(this.filmsService.shipUrl + this.ships)
-      })
-  }
+  // showShip() {
+  //   this.filmsService.getShips()
+  //     .subscribe( ship => {
+  //       this.ship = ship
+  //       this.ship = this.ship.results
+  //       console.log(ship)
+  //       console.log(this.filmsService.shipUrl + this.ship)
+  //     })
+  // }
 
   getShips(){
     return this.http.get(`${this.shipUrl}${this.searchParam}`)
@@ -83,14 +80,14 @@ export class SearchComponent implements OnInit {
  
  
 
-  showFilm() {
-    this.filmsService.getFilms()
-      .subscribe( film => {
-        this.film = film
-        this.film = this.film.results
-        console.log('This is my endpoint:', this.filmsService.filmUrl)
-      })
-  }
+  // showFilm() {
+  //   this.filmsService.getFilms()
+  //     .subscribe( film => {
+  //       this.film = film
+  //       this.film = this.film.results
+  //       console.log('This is my endpoint:', this.filmsService.filmUrl)
+  //     })
+  // }
   
   getFilms(){
     return this.http.get(`${this.filmUrl}${this.searchParam}`)

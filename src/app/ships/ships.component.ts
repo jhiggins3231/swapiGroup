@@ -16,13 +16,13 @@ export class ShipsComponent implements OnInit {
   private filmsService: FilmsService
   ) { }
 
-  showStarships() {
-    this.filmsService.getStarships()
-      .subscribe( starship => {
-        this.starships = starship
-        console.log(this.starships)
-      })
-  }
+  // showStarships() {
+  //   this.filmsService.getStarships()
+  //     .subscribe( starship => {
+  //       this.starships = starship
+  //       console.log(this.starships)
+  //     })
+  // }
   ngOnInit() {
   }
 
